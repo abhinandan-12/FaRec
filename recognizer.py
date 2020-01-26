@@ -142,6 +142,6 @@ print(minc,"is the minimum confidence detected")
 cursor.close()
 db.close()
 # Do a bit of cleanup
-print("\n [INFO] Exiting Program and cleanup stuff")
+print("\nExiting Program and cleanup stuff")
 cam.release()
 #cv2.destroyAllWindows()
