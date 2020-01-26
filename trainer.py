@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 from PIL import Image #pillow package
 import os
-from progress.bar import ShadyBar
-bar = ShadyBar('Processing', max=100)
+
 # Path for face image database
 path = 'dataset'
 
@@ -28,11 +27,10 @@ def getImagesAndLabels(path):
         for (x,y,w,h) in faces:
             faceSamples.append(img_numpy[y:y+h,x:x+w])
             ids.append(id)
-        bar.next()
 
     return faceSamples,ids
-bar.finish()
-print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
+
+print ("\nTraining faces. It will take a few seconds. Wait ...")
 faces,ids = getImagesAndLabels(path)
 recognizer.train(faces, np.array(ids))
 
