@@ -11,7 +11,7 @@ cam.set(4, 480) # set video height
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 # For each person, enter one numeric face id (must enter number start from 1, this is the lable of person 1)
-face_id = input('\n Enter your FaRec ID: ')
+face_id = input('\nEnter your FaRec ID: ')
 
 que='select name from record where farec_id ={};'.format(face_id)
 exe1=cursor.execute(que)
@@ -20,7 +20,7 @@ for i in name_list:
     name=i
 print(name)
 
-print("\n [INFO] Initializing face capture. Look the camera and wait ...")
+print("\nInitializing face capture. Look the camera and wait ...")
 # Initialize individual sampling face count
 count = 0
 
@@ -48,7 +48,7 @@ while(True):
          break
 
 # Do a bit of cleanup
-print("\n [INFO] Exiting Program and cleanup stuff")
+print("\nExiting Program and cleanup stuff")
 cam.release()
 cv2.destroyAllWindows()
 
