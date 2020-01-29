@@ -72,7 +72,7 @@ while True:
         print("------------")
         print("Thank you for using FaRec\nBase/Source code by: Jacob12138xieyuan\nGithub- https://github.com/Jacob12138xieyuan/easy-real-time-face-recognition-python")
         print("Edited and Developed by Abhinandan Mandal and Ayush Kumar")
-        print("Version: Alpha 0.1")
+        print("Version: Alpha 0.2")
         input("Press enter to exit")
         break
     else:
