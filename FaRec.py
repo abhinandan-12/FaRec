@@ -1,5 +1,4 @@
 import os
-import msvcrt
 print("Checking required modules")
 os.system('cmd /c pip install pillow numpy opencv-python opencv-contrib-python tabulate mysql-connector-python mysql-connector')
 os.system('cmd /c cls')
@@ -7,11 +6,11 @@ os.system('cmd /c cls')
 import mysql.connector as sq
 from tabulate import tabulate
 import table_creator as tbc
-
+tbc.db_crt()
+tbc.tb_crt()
 db=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
 cursor=db.cursor()
 tabulate.PRESERVE_WHITESPACE = True
-tbc.table_crt()
 os.system('cmd /c cls')
 print('Welcome to FaRec!\nChoose the following to continue:\n------------')
 
