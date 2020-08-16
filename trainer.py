@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 from PIL import Image #pillow package
 import os
-
 # Path for face image database
 path = 'dataset'
 
@@ -28,9 +27,10 @@ def getImagesAndLabels(path):
             faceSamples.append(img_numpy[y:y+h,x:x+w])
             ids.append(id)
 
+
     return faceSamples,ids
 
-print ("\nTraining faces. It will take a few seconds. Wait ...")
+print ("\n [INFO] Training faces. It will take a few seconds. Wait ...")
 faces,ids = getImagesAndLabels(path)
 recognizer.train(faces, np.array(ids))
 
