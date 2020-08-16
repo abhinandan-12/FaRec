@@ -1,6 +1,11 @@
 import mysql.connector as sq
+import authenticator
 
-db=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
+auth_data = authenticator.read()
+uid = auth_data[0]
+password = auth_data[1]
+
+db=sq.connect(host='localhost',user=uid,passwd=password,database='farec')
 cursor=db.cursor()
 
 choice=int(input("1. Add data individually\n2. Import from spreadsheet\nEnter your choice: "))

@@ -1,7 +1,11 @@
 def db_crt():
     import mysql.connector as sq
     import time as t
-    db=sq.connect(host='localhost',user='root',passwd='1234')
+    import authenticator
+    auth_data = authenticator.read()
+    uid = auth_data[0]
+    password = auth_data[1]
+    db=sq.connect(host='localhost',user=uid,passwd=password)
     cursor=db.cursor()
     print("Checking Database")
     check='show databases'
@@ -24,7 +28,11 @@ def db_crt():
 def tb_crt():
     import mysql.connector as sq
     import time as t
-    tb=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
+    import authenticator
+    auth_data = authenticator.read()
+    uid = auth_data[0]
+    password = auth_data[1]
+    tb=sq.connect(host='localhost',user=uid,passwd=password,database='farec')
     crsr=tb.cursor()
     print("\nChecking Table")
     check2='show tables'
@@ -44,4 +52,3 @@ def tb_crt():
         tb.close()
     else:
         print("\nTable found!\n------------\n")
-        

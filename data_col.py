@@ -1,7 +1,13 @@
 import cv2
 import os
 import mysql.connector as sq
-db=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
+import authenticator
+
+auth_data = authenticator.read()
+uid = auth_data[0]
+password = auth_data[1]
+
+db=sq.connect(host='localhost',user=uid,passwd=password',database='farec')
 cursor=db.cursor()
 cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video width
@@ -51,3 +57,5 @@ while(True):
 print("\n [INFO] Exiting Program and cleanup stuff")
 cam.release()
 cv2.destroyAllWindows()
+
+

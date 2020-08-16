@@ -10,9 +10,14 @@ import os
 from PIL import Image
 import time
 import mysql.connector as sq
-count=0
+import authenticator
 
-db=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
+auth_data = authenticator.read()
+uid = auth_data[0]
+password = auth_data[1]
+
+count=0
+db=sq.connect(host='localhost',user=uid,passwd=password'1234',database='farec')
 cursor=db.cursor()
 cursor.execute("show columns from record;")
 a=0
