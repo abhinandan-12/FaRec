@@ -1,7 +1,15 @@
 import os
+if os.name=='nt': #windows
+    shell='cmd /c '
+    clr='cls'
+    pyt=''
+elif os.name=='posix': #linux/mac
+    shell=''
+    clr='clear'
+    pyt='python3 '
 print("Checking required modules")
-os.system('cmd /c pip install pillow numpy opencv-python opencv-contrib-python tabulate mysql-connector-python mysql-connector pyfiglet')
-os.system('cmd /c cls')
+os.system(shell+'pip3 install pillow numpy opencv-python opencv-contrib-python tabulate mysql-connector-python mysql-connector pyfiglet')
+os.system(shell+clr)
 
 import mysql.connector as sq
 from tabulate import tabulate
@@ -22,11 +30,10 @@ tbc.tb_crt()
 db=sq.connect(host='localhost',user=uid,passwd=password,database='farec')
 cursor=db.cursor()
 tabulate.PRESERVE_WHITESPACE = True
-os.system('cmd /c cls')
+os.system(shell+clr)
 banner = fg.figlet_format("FaRec")
 
 while True:
-    os.system('color 3')
     options="1. Add students in database\n2. Update table column\n3. Collect images for FaRec\n4. Start trainer\n5. Start FaRec recognizer\n6. Show attendance record\n7. Exit"
     print(banner)
     print('Choose the following to continue:\n------------')
@@ -41,42 +48,42 @@ while True:
     for i in a:
         header.append(i[0])
     if opt==1:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("Opening Record Updater")
         print("------------")
-        os.system('rec_upd.py')
+        os.system(pyt+'rec_upd.py')
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==2:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("Opening Table Updater")
         print("------------")
-        os.system('tb_upd.py')
+        os.system(pyt+'tb_upd.py')
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==3:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("Opening Dataset Collector")
         print("------------")
-        os.system('data_col.py')
+        os.system(pyt+'data_col.py')
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==4:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("Training faces")
         print("------------")
-        os.system('trainer.py')
+        os.system(pyt+'trainer.py')
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==5:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("Opening Recognizer")
         print("------------")
-        os.system('recognizer.py')
+        os.system(pyt+'recognizer.py')
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==6:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         cursor.execute("select * from record;")
         b=cursor.fetchall()
         for i in b:
@@ -84,9 +91,9 @@ while True:
         print(tabulate(b, header, tablefmt='fancy_grid'))
         print("------------")
         input("Press enter to continue")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
     elif opt==7:
-        os.system('cmd /c cls')
+        os.system(shell+clr)
         print("------------")
         print("Thank you for using FaRec\nBase/Source code by: Jacob12138xieyuan\nGithub- https://github.com/Jacob12138xieyuan/easy-real-time-face-recognition-python")
         print("Edited and Developed by Abhinandan Mandal and Ayush Kumar")
@@ -96,4 +103,4 @@ while True:
     else:
         print("Invalid choice")
         print("------------")
-        os.system('cmd /c cls')
+        os.system(shell+clr)
