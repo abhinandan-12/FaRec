@@ -44,3 +44,4 @@ def tb_crt():
         tb.close()
     else:
         print("\nTable found!\n------------\n")
+        
