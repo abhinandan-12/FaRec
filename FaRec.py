@@ -8,6 +8,7 @@ from tabulate import tabulate
 import table_creator as tbc
 tbc.db_crt()
 tbc.tb_crt()
+
 db=sq.connect(host='localhost',user='root',passwd='1234',database='farec')
 cursor=db.cursor()
 tabulate.PRESERVE_WHITESPACE = True
@@ -72,7 +73,7 @@ while True:
         print("------------")
         print("Thank you for using FaRec\nBase/Source code by: Jacob12138xieyuan\nGithub- https://github.com/Jacob12138xieyuan/easy-real-time-face-recognition-python")
         print("Edited and Developed by Abhinandan Mandal and Ayush Kumar")
-        print("Version: Alpha 0.2")
+        print("Version: Alpha 0.1")
         input("Press enter to exit")
         break
     else:
