@@ -10,9 +10,9 @@ while True:
 ###################
             path=input("Enter spreadsheet filename/directory or Drag it here: ")
             path=path.replace("\\","/")
-            q1="LOAD DATA LOCAL INFILE '"+path+"' INTO TABLE record FIELDS TERMINATED BY ',' IGNORE 1 LINES;"
+            q1="load data local infile '{}' into table record fields terminated by ',' ignore 1 lines;".format(path)
             print("------------")
-
+            print(q1)
             cursor.execute(q1)
 
             db.commit()
