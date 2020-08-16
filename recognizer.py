@@ -37,6 +37,7 @@ name_list=cursor.fetchall()
 for i1 in name_list:
     for j1 in i1:
         names.append(j1)
+#DEBUG_START
 #print(name_list)
         
 #for imagePath in imagePaths:
@@ -50,6 +51,8 @@ for i1 in name_list:
     
 #    else:
 #        names.append(name)
+#DEBUG_END
+
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer/trainer.yml')   #load trained model
 cascadePath = "haarcascade_frontalface_default.xml"
@@ -142,6 +145,6 @@ print(minc,"is the minimum confidence detected")
 cursor.close()
 db.close()
 # Do a bit of cleanup
-print("\nExiting Program and cleanup stuff")
+print("\n [INFO] Exiting Program and cleanup stuff")
 cam.release()
 #cv2.destroyAllWindows()
