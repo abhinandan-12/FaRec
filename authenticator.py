@@ -1,3 +1,6 @@
+def key_check():
+    return open("auth_key.key","rb")
+
 def check():
     import os.path
     return os.path.isfile('./auth.dat')
