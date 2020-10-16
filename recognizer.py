@@ -1,9 +1,3 @@
-############################################
-## Modified By Ayush And Abhinandan       ##
-##                                        ##
-############################################
-
-
 import cv2
 import numpy as np
 import os
@@ -42,21 +36,6 @@ name_list=cursor.fetchall()
 for i1 in name_list:
     for j1 in i1:
         names.append(j1)
-#DEBUG_START
-#print(name_list)
-        
-#for imagePath in imagePaths:
-#    PIL_img = Image.open(imagePath).convert('L') # convert it to grayscale
-#    img_numpy = np.array(PIL_img,'uint8')
-
-#    name = str(os.path.split(imagePath)[-1].split(".")[2])
-#    print(name)
-#    if name in names:                                   #checking the names if it exist or not !!!
-#      continue
-    
-#    else:
-#        names.append(name)
-#DEBUG_END
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainer/trainer.yml')   #load trained model
@@ -68,15 +47,12 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 att=[]
 com=0
 
-#iniciate id counter, the number of persons you want to include
 id = len(names)
 
-# Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
 cam.set(3, 640) # set video width
 cam.set(4, 480) # set video height
 
-# Define min window size to be recognized as a face
 minW = 0.1*cam.get(3)
 minH = 0.1*cam.get(4)
 
@@ -107,8 +83,6 @@ while True:
         elif confidence <= minc:
             minc=confidence
         
-
-        # Check if confidence is less them 100 ==> "0" is perfect match 
         if ((100-confidence) < 50) and ((100-confidence) > 35) :
            # print(id)
         #if (confidence < 100):
@@ -149,7 +123,6 @@ print(minc,"is the minimum confidence detected")
 
 cursor.close()
 db.close()
-# Do a bit of cleanup
 print("\n [INFO] Exiting Program and cleanup stuff")
 cam.release()
 #cv2.destroyAllWindows()
